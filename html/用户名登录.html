@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="username" placeholder="请输入用户名"/>
+		<input type="password" id="password" placeholder="请输入密码"/>
+		<label><input type="checkbox" id="remember" />记住用户名</label>
+		<button id="btn">登录</button>
+		<script type="text/javascript" src="../js/tools.js"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				var username=getCookie("loginUser");
+				if(username)
+					$("#username").value=username;
+			}
+			on($("#btn"),"click",function(){
+				var username = $("#username").value,
+					password = $("#password").value;
+				var remember = $("#remember").checked;
+				if(remember){
+					setCookie("loginUser",username,{expires:1});
+				}else{
+					removeCookie("loginUser");
+				}
+				alert("用户登录成功......");
+			})
+		</script>
+	</body>
+</html>
